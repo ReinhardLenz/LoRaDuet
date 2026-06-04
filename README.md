@@ -20,17 +20,15 @@ In this project, LoRa is used to send a simple text message from one board to an
 
 ## Software Overview
 
-This repository contains two independent firmware programs:
+This repository contains one program:
 
-Both programs use the **RadioLib** library to control the **SX1262 LoRa radio** on the T-Beam.
+The  program uses the **RadioLib** library to control the **SX1262 LoRa radio** on the T-Beam.
 
 ---
 
 ## Program Logic (How it works)
 
-### 1) Sender (`main_send.cpp`)
-
-### 2) Receiver (`main_receive.cpp`)
+This is the ping pong example of radiolib, adapted for T-BEAM as below. The program checks, if a packet was received and prints out data, Signal strength and Signal-to-Noise Ratio. Then it waits a second, and sends itself a message. The initial message is in setup, starting with INITIATING_NODE.
 
 ---
 

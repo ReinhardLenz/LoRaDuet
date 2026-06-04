@@ -15,7 +15,7 @@
 
 // include the library
 #include <RadioLib.h>
-
+#include <SPI.h>
 // uncomment the following only on one
 // of the nodes to initiate the pings
 //#define INITIATING_NODE
@@ -48,6 +48,9 @@ volatile bool operationDone = false;
 // is transmitted or received by the module
 // IMPORTANT: this function MUST be 'void' type
 //            and MUST NOT have any arguments!
+
+#define INITIATING_NODE
+
 #if defined(ESP8266) || defined(ESP32)
   ICACHE_RAM_ATTR
 #endif
@@ -57,13 +60,16 @@ void setFlag(void) {
 }
 
 void setup() {
-  Serial.begin(9600);
-
+  Serial.begin(115200);
+  delay(2000);
+  Serial.println("\nBooting...");
+  SPI.begin(5, 19, 27, 18);
   // initialize SX1262 at 868 MHz
   Serial.print(F("[SX1262] Initializing ... "));
   ConfigLoRa_t config;
   config.frequency = 868.0;
   int state = radio.begin(config);
+  Serial.printf("[DBG] radio.begin returned %d\n", state);
   if (state == RADIOLIB_ERR_NONE) {
     Serial.println(F("success!"));
   } else {
