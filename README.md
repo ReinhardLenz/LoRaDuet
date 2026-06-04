@@ -28,7 +28,7 @@ The  program uses the **RadioLib** library to control the **SX1262 LoRa radio** 
 
 ## Program Logic (How it works)
 
-This is the ping pong example of radiolib, adapted for T-BEAM as below. The program checks, if a packet was received and prints out data, Signal strength and Signal-to-Noise Ratio. Then it waits a second, and sends itself a message. The initial message is in setup, starting with INITIATING_NODE.
+This is the ping pong example of radiolib, adapted for T-BEAM as below. The program checks, if a packet was received and prints out data, Signal strength and Signal-to-Noise Ratio. Then it waits a second, and sends itself a message. The initial message is in setup, starting with INITIATING_NODE. When uploading the program, in one of the 2 devices , the line #define INITIATING_NODE must be commented out, then it's clear which device starts the communication.
 
 ---
 
